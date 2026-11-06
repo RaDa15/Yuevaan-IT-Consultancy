@@ -1,38 +1,200 @@
 /* Yuevaán IT Consultancy — interactions
-   1. Mobile navigation toggle
-   2. Scroll reveal for sections
-   3. Contact form submit feedback (demo only)
+   0. Brand preloader dismissal
+   1. Mobile navigation toggle & sticky header state
+   2. Scroll reveal & stats counter animation
+   3. Client ticker seamless loop
+   4. Click-to-load map
+   5. Contact form submit feedback (demo only)
 */
 
-/* ---------- 1. mobile nav ---------- */
+document.documentElement.classList.add('js');
+
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- 1. mobile nav & sticky header ---------- */
 const btn = document.getElementById('menuBtn');
 const nav = document.getElementById('nav');
+const topbar = document.querySelector('.topbar');
 
-btn.addEventListener('click', () => {
-  const open = nav.classList.toggle('open');
-  btn.setAttribute('aria-expanded', open);
-  btn.textContent = open ? 'Close' : 'Menu';
-});
+if (btn && nav) {
+  btn.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+    btn.textContent = open ? 'Close' : 'Menu';
+  });
 
-nav.addEventListener('click', e => {
-  if (e.target.tagName === 'A') {
-    nav.classList.remove('open');
-    btn.textContent = 'Menu';
-    btn.setAttribute('aria-expanded', 'false');
-  }
-});
-
-/* ---------- 2. scroll reveal ---------- */
-const io = new IntersectionObserver(entries => {
-  entries.forEach(en => {
-    if (en.isIntersecting) {
-      en.target.classList.add('in');
-      io.unobserve(en.target);
+  nav.addEventListener('click', e => {
+    if (e.target.tagName === 'A') {
+      nav.classList.remove('open');
+      btn.textContent = 'Menu';
+      btn.setAttribute('aria-expanded', 'false');
     }
   });
-}, { threshold: 0.12 });
+}
 
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+if (topbar) {
+  const syncTopbar = () => {
+    topbar.classList.toggle('is-scrolled', window.scrollY > 16);
+  };
+  syncTopbar();
+  window.addEventListener('scroll', syncTopbar, { passive: true });
+}
+
+if (nav && 'IntersectionObserver' in window) {
+  const navLinks = Array.from(nav.querySelectorAll('a[href^="#"]'));
+  const sections = navLinks
+    .map(link => document.querySelector(link.getAttribute('href')))
+    .filter(Boolean);
+
+  if (sections.length) {
+    const spy = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        const activeId = `#${en.target.id}`;
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === activeId);
+        });
+      });
+    }, { rootMargin: '-35% 0px -55% 0px' });
+
+    sections.forEach(sec => spy.observe(sec));
+  }
+}
+
+/* ---------- 2. preloader, scroll reveal & stats counting ---------- */
+const preloader = document.getElementById('preloader');
+const revealEls = document.querySelectorAll('.reveal');
+const countEls = document.querySelectorAll('[data-count]');
+
+function animateCount(el) {
+  if (el.dataset.counted === 'true') return;
+  el.dataset.counted = 'true';
+
+  const target = parseFloat(el.dataset.count);
+  if (Number.isNaN(target)) return;
+
+  const prefix = el.dataset.prefix || '';
+  const suffix = el.dataset.suffix || '';
+  const decimals = (el.dataset.count.split('.')[1] || '').length;
+  const duration = 1800;
+
+  if (reduceMotion) {
+    el.textContent = `${prefix}${target.toFixed(decimals)}${suffix}`;
+    return;
+  }
+
+  let startTime = null;
+  el.textContent = `${prefix}${(0).toFixed(decimals)}${suffix}`;
+
+  const step = timestamp => {
+    if (!startTime) startTime = timestamp;
+    const elapsed = timestamp - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    // Smooth quartic ease-out
+    const eased = 1 - Math.pow(1 - progress, 4);
+    const current = target * eased;
+
+    el.textContent = `${prefix}${current.toFixed(decimals)}${suffix}`;
+
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    } else {
+      el.textContent = `${prefix}${target.toFixed(decimals)}${suffix}`;
+    }
+  };
+
+  requestAnimationFrame(step);
+}
+
+function initRevealAndCounters() {
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealEls.forEach(el => el.classList.add('in'));
+    countEls.forEach(el => animateCount(el));
+    return;
+  }
+
+  const io = new IntersectionObserver(entries => {
+    let batchIndex = 0;
+
+    entries.forEach(en => {
+      if (!en.isIntersecting) return;
+
+      const el = en.target;
+      const customDelay = el.dataset.delay;
+      let delayMs = 0;
+
+      if (customDelay !== undefined) {
+        delayMs = parseInt(customDelay, 10) || 0;
+      } else {
+        delayMs = Math.min(batchIndex * 85, 425);
+        batchIndex += 1;
+      }
+
+      el.style.setProperty('--reveal-delay', `${delayMs}ms`);
+      el.classList.add('in');
+
+      // Trigger any stats counter inside or on this revealed element
+      const counters = el.matches('[data-count]')
+        ? [el]
+        : Array.from(el.querySelectorAll('[data-count]'));
+      counters.forEach(counter => {
+        setTimeout(() => animateCount(counter), delayMs);
+      });
+
+      io.unobserve(el);
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -44px 0px'
+  });
+
+  revealEls.forEach(el => io.observe(el));
+
+  // Observe any standalone [data-count] not wrapped inside .reveal
+  const countIo = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      animateCount(en.target);
+      countIo.unobserve(en.target);
+    });
+  }, { threshold: 0.2 });
+
+  countEls.forEach(el => {
+    if (!el.closest('.reveal')) {
+      countIo.observe(el);
+    }
+  });
+}
+
+if (preloader && !reduceMotion) {
+  const startStamp = performance.now();
+  const minDisplayMs = 600;
+  let dismissed = false;
+
+  const dismissPreloader = () => {
+    if (dismissed) return;
+    dismissed = true;
+    const elapsed = performance.now() - startStamp;
+    const wait = Math.max(0, minDisplayMs - elapsed);
+
+    setTimeout(() => {
+      preloader.classList.add('is-hidden');
+      initRevealAndCounters();
+      setTimeout(() => preloader.remove(), 650);
+    }, wait);
+  };
+
+  if (document.readyState === 'complete') {
+    dismissPreloader();
+  } else {
+    window.addEventListener('load', dismissPreloader, { once: true });
+    // Fallback so slow third-party embeds never block the user
+    setTimeout(dismissPreloader, 1400);
+  }
+} else {
+  if (preloader) preloader.classList.add('is-hidden');
+  initRevealAndCounters();
+}
 
 /* ---------- 3. client ticker ----------
    Each track holds one .marq-group of logos. We clone it once so the
@@ -42,12 +204,18 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 document.querySelectorAll('.marq-track').forEach(track => {
   const group = track.querySelector('.marq-group');
   if (!group) return;
+  group.querySelectorAll('.marq-item').forEach(item => {
+    if (!item.dataset.org) {
+      const img = item.querySelector('img');
+      if (img && img.alt) item.dataset.org = img.alt;
+    }
+  });
   const clone = group.cloneNode(true);
   clone.setAttribute('aria-hidden', 'true');
   track.appendChild(clone);
 });
 
-/* ---------- 4. click-to-load map ----------
+/* ---------- 5. click-to-load map ----------
    The iframe is built only when the visitor asks for it, so a normal page view
    makes zero requests to Google. This is also the single heaviest asset on the
    page, so deferring it improves load time as much as it improves privacy. */
@@ -75,7 +243,7 @@ if (mapBox && mapLoad) {
   });
 }
 
-/* ---------- 5. enquiry form ----------
+/* ---------- 6. enquiry form ----------
    Progressive enhancement: without JS the form still posts to /api/enquiry.
    With JS it submits in the background and reports status in a live region.
    Replace the fetch target with your real endpoint. */
