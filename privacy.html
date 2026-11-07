@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Privacy — Yuevaán IT Consultancy</title>
+  <title>Privacy — Yuevaan IT Consultancy</title>
   <meta name="description" content="What we collect when you contact us, and what we do not.">
   <link rel="canonical" href="https://yuevaanconsultancy.bt/privacy.html">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#F7F6F2">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self'; frame-src https://www.google.com https://maps.google.com; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests">
+  <meta name="theme-color" content="#061829">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Yuevaán IT Consultancy">
-  <meta property="og:title" content="Privacy — Yuevaán IT Consultancy">
+  <meta property="og:site_name" content="Yuevaan IT Consultancy">
+  <meta property="og:title" content="Privacy — Yuevaan IT Consultancy">
   <meta property="og:description" content="What we collect when you contact us, and what we do not.">
   <meta property="og:url" content="https://yuevaanconsultancy.bt/privacy.html">
   <meta property="og:image" content="https://yuevaanconsultancy.bt/images/og-default.png">
@@ -22,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <script>document.documentElement.classList.add('js');</script>
+  <script src="theme-init.js"></script>
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 
@@ -47,7 +50,7 @@
         <span class="preloader-ring preloader-ring-inner"></span>
         <img class="preloader-logo" src="images/yuevaanlogo-removebg-preview.png" alt="" width="84" height="84">
       </div>
-      <div class="preloader-brand">Yuevaán<span>IT Consultancy</span></div>
+      <div class="preloader-brand">Yuevaan<span>IT Consultancy</span></div>
       <div class="preloader-diamonds">
         <span class="p-dia p-dia-blue"></span>
         <span class="p-dia p-dia-green"></span>
@@ -60,18 +63,26 @@
 
   <header class="topbar">
     <div class="shell topbar-inner">
-      <a class="brand" href="index.html" aria-label="Yuevaán IT Consultancy — home">
-        <img src="images/yuevaanlogo-removebg-preview.png" alt="" width="38" height="38" onerror="this.style.display='none'">
-        <span class="brand-txt">Yuevaán<span>IT Consultancy</span></span>
+      <a class="brand" href="index.html" aria-label="Yuevaan IT Consultancy — home">
+        <img src="images/yuevaanlogo-removebg-preview.png" alt="" width="38" height="38" data-hide-on-error>
+        <span class="brand-txt">Yuevaan<span>IT Consultancy</span></span>
       </a>
       <nav class="nav" id="nav" aria-label="Main">
-        <a href="index.html#capabilities">Capabilities</a>
-        <a href="index.html#work">Work</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#portfolio">Portfolio</a>
         <a href="index.html#approach">Approach</a>
         <a href="index.html#contact">Contact</a>
       </nav>
-      <a class="btn btn-primary" href="index.html#contact">Start a project</a>
-      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+      <div class="topbar-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch light or dark theme" aria-pressed="true" title="Switch light / dark theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="8.5" />
+            <path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor" />
+          </svg>
+        </button>
+        <a class="btn btn-primary" href="index.html#contact">Start a project <span class="btn-arrow" aria-hidden="true">→</span></a>
+        <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+      </div>
     </div>
   </header>
 
@@ -99,9 +110,11 @@
       </div>
 
       <div class="reveal">
-        <h2>Cookies and tracking</h2>
-        <p>This site sets no cookies and runs no advertising or tracking pixels, which is why you were not asked to
-          dismiss a consent banner. The office map is embedded from Google.</p>
+        <h2>Cookies, local storage and tracking</h2>
+        <p>This site sets no first-party cookies and runs no advertising or tracking pixels, which is why you were not asked to
+          dismiss a consent banner. If you switch between the dark and light themes, your browser saves that choice locally
+          (<code>yv-theme</code> in <code>localStorage</code>) on your device only. The office map in the contact section is
+          lazily embedded from Google Maps, which may receive your IP address and set Google cookies when scrolled into view.</p>
       </div>
 
       <div class="reveal">
@@ -122,9 +135,9 @@
     <div class="shell">
       <div class="foot-grid">
         <div class="reveal">
-          <a class="foot-brand" href="index.html" aria-label="Yuevaán IT Consultancy — home">
-            <img src="images/yuevaanlogo-removebg-preview.png" alt="" width="38" height="38" onerror="this.style.display='none'">
-            <span class="brand-txt">Yuevaán<span>IT Consultancy</span></span>
+          <a class="foot-brand" href="index.html" aria-label="Yuevaan IT Consultancy — home">
+            <img src="images/yuevaanlogo-removebg-preview.png" alt="" width="38" height="38" data-hide-on-error>
+            <span class="brand-txt">Yuevaan<span>IT Consultancy</span></span>
           </a>
           <p class="foot-about">Bhutan's leading software development company delivering innovative web, mobile, ERP and cloud infrastructure solutions since 2017.</p>
 
@@ -186,20 +199,20 @@
         <div class="reveal">
           <h4>Services</h4>
           <ul>
-            <li><a href="index.html#capabilities">Web Application Development</a></li>
-            <li><a href="index.html#capabilities">Mobile App Development</a></li>
-            <li><a href="index.html#capabilities">Cloud &amp; Migration</a></li>
-            <li><a href="index.html#capabilities">IT Infrastructure &amp; Networking</a></li>
-            <li><a href="index.html#capabilities">ERP Implementation</a></li>
-            <li><a href="index.html#capabilities">System Integration</a></li>
+            <li><a href="index.html#services">Web Application Development</a></li>
+            <li><a href="index.html#services">Mobile App Development</a></li>
+            <li><a href="index.html#services">Cloud &amp; Migration</a></li>
+            <li><a href="index.html#services">IT Infrastructure &amp; Networking</a></li>
+            <li><a href="index.html#services">ERP Implementation</a></li>
+            <li><a href="index.html#services">System Integration</a></li>
           </ul>
         </div>
         <div class="reveal">
           <h4>Company</h4>
           <ul>
             <li><a href="index.html#approach">About Us</a></li>
-            <li><a href="index.html#work">Featured Projects</a></li>
-            <li><a href="index.html#capabilities">What We Deliver</a></li>
+            <li><a href="index.html#portfolio">Featured Projects</a></li>
+            <li><a href="index.html#services">What We Deliver</a></li>
             <li><a href="index.html#contact">Contact Us</a></li>
             <li><a href="index.html#contact">Careers</a></li>
           </ul>
@@ -215,7 +228,7 @@
         </div>
       </div>
       <div class="foot-bottom">
-        <span>© 2026 Yuevaán IT Consultancy. All rights reserved.</span>
+        <span>© 2026 Yuevaan IT Consultancy. All rights reserved.</span>
         <span>
           <a href="privacy.html" aria-current="page">Privacy Policy</a> ·
           <a href="terms.html">Terms of Service</a>

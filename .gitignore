@@ -2,3 +2,15 @@
 Thumbs.db
 *.log
 .vscode/
+
+# Secrets, environment configs & private keys
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Dependencies & local build artifacts
+node_modules/

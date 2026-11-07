@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://yuevaanconsultancy.bt/sitemap.xml

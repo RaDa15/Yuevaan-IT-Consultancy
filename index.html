@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Yuevaán IT Consultancy — Software, cloud and IT infrastructure in Bhutan</title>
+  <title>Yuevaan IT Consultancy — Software, cloud and IT infrastructure in Bhutan</title>
   <meta name="description"
     content="Bhutan-based software company building registries, laboratory systems, mobile apps and AWS cloud platforms for government agencies, UN partners and enterprises. Thimphu, since 2017.">
   <link rel="canonical" href="https://yuevaanconsultancy.bt/">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#F7F6F2">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self'; frame-src https://www.google.com https://maps.google.com; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests">
+  <meta name="theme-color" content="#061829">
 
   <!-- Deliberately NOT included, and why:
        meta keywords    — ignored by every major engine since ~2009
@@ -24,19 +27,19 @@
        points them at two different paths and one of them 404s. Replace with a
        1200x630 branded card, not the bare logo. -->
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Yuevaán IT Consultancy">
+  <meta property="og:site_name" content="Yuevaan IT Consultancy">
   <meta property="og:locale" content="en_BT">
   <meta property="og:url" content="https://yuevaanconsultancy.bt/">
-  <meta property="og:title" content="Yuevaán IT Consultancy — Systems for Bhutan">
+  <meta property="og:title" content="Yuevaan IT Consultancy — Systems for Bhutan">
   <meta property="og:description"
     content="Registries, laboratory systems, mobile apps and cloud platforms, designed and supported in-country.">
   <meta property="og:image" content="https://yuevaanconsultancy.bt/images/og-default.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Yuevaán IT Consultancy">
+  <meta property="og:image:alt" content="Yuevaan IT Consultancy">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Yuevaán IT Consultancy — Systems for Bhutan">
+  <meta name="twitter:title" content="Yuevaan IT Consultancy — Systems for Bhutan">
   <meta name="twitter:description"
     content="Registries, laboratory systems, mobile apps and cloud platforms, designed and supported in-country.">
   <meta name="twitter:image" content="https://yuevaanconsultancy.bt/images/og-default.png">
@@ -52,7 +55,7 @@
     href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
     rel="stylesheet">
 
-  <script>document.documentElement.classList.add('js');</script>
+  <script src="theme-init.js"></script>
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 
@@ -62,7 +65,7 @@
   {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "Yuevaán IT Consultancy",
+    "name": "Yuevaan IT Consultancy",
     "url": "https://yuevaanconsultancy.bt/",
     "logo": "https://yuevaanconsultancy.bt/images/favicon.png",
     "image": "https://yuevaanconsultancy.bt/images/og-default.png",
@@ -109,7 +112,7 @@
         <span class="preloader-ring preloader-ring-inner"></span>
         <img class="preloader-logo" src="images/yuevaanlogo-removebg-preview.png" alt="" width="84" height="84">
       </div>
-      <div class="preloader-brand">Yuevaán<span>IT Consultancy</span></div>
+      <div class="preloader-brand">Yuevaan<span>IT Consultancy</span></div>
       <div class="preloader-diamonds">
         <span class="p-dia p-dia-blue"></span>
         <span class="p-dia p-dia-green"></span>
@@ -124,32 +127,39 @@
 
   <header class="topbar">
     <div class="shell topbar-inner">
-      <a class="brand" href="index.html" aria-label="Yuevaán IT Consultancy — home">
-        <img src="images/yuevaanlogo-removebg-preview.png" alt="" width="38" height="38" onerror="this.style.display='none'">
-        <span class="brand-txt">Yuevaán<span>IT Consultancy</span></span>
+      <a class="brand" href="index.html" aria-label="Yuevaan IT Consultancy — home">
+        <img src="images/yuevaanlogo-removebg-preview.png" alt="" width="38" height="38" data-hide-on-error>
+        <span class="brand-txt">Yuevaan<span>IT Consultancy</span></span>
       </a>
       <nav class="nav" id="nav" aria-label="Main">
-        <a href="#capabilities">Capabilities</a>
-        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
         <a href="#approach">Approach</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a class="btn btn-primary" href="#contact">Start a project</a>
-      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+      <div class="topbar-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch light or dark theme" aria-pressed="true" title="Switch light / dark theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="8.5" />
+            <path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor" />
+          </svg>
+        </button>
+        <a class="btn btn-primary" href="#contact">Start a project <span class="btn-arrow" aria-hidden="true">→</span></a>
+        <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+      </div>
     </div>
   </header>
 
   <main id="main" tabindex="-1">
 
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" id="top">
+      <canvas class="hero-particles" aria-hidden="true"></canvas>
       <div class="shell hero-center">
-        <p class="eyebrow on-dark reveal" data-delay="0">Thimphu, Bhutan · Building since 2017</p>
-        <h1 class="reveal" data-delay="80">We build the systems<br><em>Bhutan runs on.</em></h1>
-        <p class="hero-lede reveal" data-delay="160">Registries, laboratory systems, insurance apps and cloud platforms for government<br>agencies, UN partners and enterprises — designed, delivered and supported in-country.</p>
+        <h1 class="reveal" data-delay="40">We build the systems<br><em>Bhutan runs on.</em></h1>
+        <p class="hero-lede reveal" data-delay="120">Registries, laboratory systems, insurance apps and cloud platforms for government<br>agencies, UN partners and enterprises — designed, delivered and supported in-country.</p>
         <div class="hero-cta reveal" data-delay="230">
-          <a class="btn btn-primary" href="#contact">Start a project</a>
-          <a class="btn btn-ghost" href="#work">See what we've delivered</a>
+          <a class="btn btn-ghost" href="#portfolio">See what we've delivered <span class="btn-arrow" aria-hidden="true">→</span></a>
         </div>
         <div class="hero-foot">
           <div class="hero-stat reveal" data-delay="290">
@@ -175,38 +185,24 @@
     <!-- CLIENTS -->
     <!-- each .marq-group is duplicated by script.js to make the loop seamless -->
     <div class="clients">
-      <p class="clients-label reveal">Delivered for</p>
+      <p class="clients-label reveal">Trusted By</p>
 
       <!-- row 1 — right to left -->
       <div class="marquee reveal">
         <div class="marq-track">
           <div class="marq-group">
-            <span class="marq-item" data-org="UNICEF Bhutan"><img src="images/clients/unicef.png" alt="UNICEF Bhutan"
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>UNICEF Bhutan</span>'"></span>
-            <span class="marq-item" data-org="United Nations Development Programme (UNDP)"><img src="images/clients/undp.jpg" alt="United Nations Development Programme (UNDP)"
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>UNDP</span>'"></span>
-            <span class="marq-item" data-org="Asian Development Bank (ADB)"><img src="images/clients/adb.png" alt="Asian Development Bank (ADB)"
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>ADB</span>'"></span>
-            <span class="marq-item" data-org="Druk Holding &amp; Investments (DHI)"><img src="images/clients/dhi.png" alt="Druk Holding and Investments (DHI)"
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>DHI</span>'"></span>
-            <span class="marq-item" data-org="Royal Insurance Corporation of Bhutan (RICBL)"><img src="images/clients/ricbl.jpg" alt="Royal Insurance Corporation of Bhutan (RICBL)"
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>RICBL</span>'"></span>
-            <span class="marq-item" data-org="Bank of Bhutan (BoB)"><img src="images/clients/bob.png" alt="Bank of Bhutan (BoB)"
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>Bank of Bhutan</span>'"></span>
-            <span class="marq-item" data-org="National Environment Commission (NEC)"><img src="images/clients/nec.png" alt="National Environment Commission (NEC)"
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>NEC</span>'"></span>
-            <span class="marq-item" data-org="Corporate Regulatory Authority of Bhutan (CRA)"><img src="images/clients/cra-logo.png"
-                alt="Corporate Regulatory Authority of Bhutan (CRA)"
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>CRA</span>'"></span>
-            <span class="marq-item" data-org="Ministry of Industry, Commerce &amp; Employment (MoICE)"><img src="images/clients/moice.jpg"
-                alt="Ministry of Industry, Commerce and Employment (MoICE)"
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>MoICE</span>'"></span>
-            <span class="marq-item" data-org="Office of the Attorney General (OAG)"><img src="images/clients/aog.png" alt="Office of the Attorney General (OAG)"
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>OAG</span>'"></span>
-            <span class="marq-item" data-org="Royal Society for the Protection of Nature (RSPN)"><img src="images/clients/rspn.png" alt="Royal Society for the Protection of Nature (RSPN)"
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>RSPN</span>'"></span>
-            <span class="marq-item" data-org="Royal Institute of Management (RIM)"><img src="images/clients/rim.png" alt="Royal Institute of Management (RIM)"
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>RIM</span>'"></span>
+            <span class="marq-item" data-org="UNICEF Bhutan"><img src="images/clients/unicef.png" alt="UNICEF Bhutan" data-fallback="UNICEF Bhutan"></span>
+            <span class="marq-item" data-org="United Nations Development Programme (UNDP)"><img src="images/clients/undp.jpg" alt="United Nations Development Programme (UNDP)" data-fallback="UNDP"></span>
+            <span class="marq-item" data-org="Asian Development Bank (ADB)"><img src="images/clients/adb.png" alt="Asian Development Bank (ADB)" data-fallback="ADB"></span>
+            <span class="marq-item" data-org="Druk Holding &amp; Investments (DHI)"><img src="images/clients/dhi.png" alt="Druk Holding and Investments (DHI)" data-fallback="DHI"></span>
+            <span class="marq-item" data-org="Royal Insurance Corporation of Bhutan (RICBL)"><img src="images/clients/ricbl.jpg" alt="Royal Insurance Corporation of Bhutan (RICBL)" data-fallback="RICBL"></span>
+            <span class="marq-item" data-org="Bank of Bhutan (BoB)"><img src="images/clients/bob.png" alt="Bank of Bhutan (BoB)" data-fallback="Bank of Bhutan"></span>
+            <span class="marq-item" data-org="National Environment Commission (NEC)"><img src="images/clients/nec.png" alt="National Environment Commission (NEC)" data-fallback="NEC"></span>
+            <span class="marq-item" data-org="Corporate Regulatory Authority of Bhutan (CRA)"><img src="images/clients/cra-logo.png" alt="Corporate Regulatory Authority of Bhutan (CRA)" data-fallback="CRA"></span>
+            <span class="marq-item" data-org="Ministry of Industry, Commerce &amp; Employment (MoICE)"><img src="images/clients/moice.jpg" alt="Ministry of Industry, Commerce and Employment (MoICE)" data-fallback="MoICE"></span>
+            <span class="marq-item" data-org="Office of the Attorney General (OAG)"><img src="images/clients/aog.png" alt="Office of the Attorney General (OAG)" data-fallback="OAG"></span>
+            <span class="marq-item" data-org="Royal Society for the Protection of Nature (RSPN)"><img src="images/clients/rspn.png" alt="Royal Society for the Protection of Nature (RSPN)" data-fallback="RSPN"></span>
+            <span class="marq-item" data-org="Royal Institute of Management (RIM)"><img src="images/clients/rim.png" alt="Royal Institute of Management (RIM)" data-fallback="RIM"></span>
           </div>
         </div>
       </div>
@@ -215,58 +211,61 @@
       <div class="marquee reveal">
         <div class="marq-track reverse">
           <div class="marq-group">
-            <span class="marq-item" data-org="Bhutan National Digital Identity (NDI)"><img src="images/clients/ndi.jpg" alt="Bhutan National Digital Identity (NDI)"
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>NDI</span>'"></span>
-            <span class="marq-item" data-org="Office of Consumer Protection (OCP)"><img src="images/clients/ocp.png" alt="Office of Consumer Protection (OCP)"
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>OCP</span>'"></span>
-            <span class="marq-item" data-org="Bhutan Chamber of Commerce &amp; Industry (BCCI)"><img src="images/clients/bcci.jpg" alt="Bhutan Chamber of Commerce and Industry (BCCI)"
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>BCCI</span>'"></span>
-            <span class="marq-item" data-org="Bhutan Media Foundation (BMF)"><img src="images/clients/bmf.jpeg" alt="Bhutan Media Foundation (BMF)"
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>BMF</span>'"></span>
-            <span class="marq-item" data-org="Zero Waste Bhutan"><img src="images/clients/zerowaste.png" alt="Zero Waste Bhutan"
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>Zero Waste Bhutan</span>'"></span>
-            <span class="marq-item" data-org="National Centre for Animal Health (LIMS)"><img src="images/clients/lims.png" alt="National Centre for Animal Health (LIMS)"
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>LIMS</span>'"></span>
-            <span class="marq-item" data-org="Zimdra Food Pvt. Ltd."><img src="images/clients/zimdra.png" alt="Zimdra Food Pvt. Ltd."
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>Zimdra</span>'"></span>
-            <span class="marq-item" data-org="Gongphel Early Learning Centre (ECPF)"><img src="images/clients/gongphel.png" alt="Gongphel Early Learning Centre (ECPF)"
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>Gongphel ECPF</span>'"></span>
-            <span class="marq-item" data-org="Bhutan Green Business Standards (GBS)"><img src="images/clients/bhutangbs.jpg" alt="Bhutan Green Business Standards (GBS)"
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>Bhutan GBS</span>'"></span>
-            <span class="marq-item" data-org="Invest Bhutan Portal (MoICE)"><img src="images/clients/investbhutan.png" alt="Invest Bhutan Portal (MoICE)"
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>Invest Bhutan</span>'"></span>
-            <span class="marq-item" data-org="National Biodiversity Centre (NBC)"><img src="images/clients/nbc.jpg" alt="National Biodiversity Centre (NBC)"
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>NBC</span>'"></span>
-            <span class="marq-item" data-org="Innovate Bhutan"><img src="images/clients/innovativebhutan.png" alt="Innovate Bhutan"
-                onerror="this.outerHTML='<span class=&quot;client-fallback&quot;>Innovate Bhutan</span>'"></span>
+            <span class="marq-item" data-org="Bhutan National Digital Identity (NDI)"><img src="images/clients/ndi.jpg" alt="Bhutan National Digital Identity (NDI)" data-fallback="NDI"></span>
+            <span class="marq-item" data-org="Office of Consumer Protection (OCP)"><img src="images/clients/ocp.png" alt="Office of Consumer Protection (OCP)" data-fallback="OCP"></span>
+            <span class="marq-item" data-org="Bhutan Chamber of Commerce &amp; Industry (BCCI)"><img src="images/clients/bcci.jpg" alt="Bhutan Chamber of Commerce and Industry (BCCI)" data-fallback="BCCI"></span>
+            <span class="marq-item" data-org="Bhutan Media Foundation (BMF)"><img src="images/clients/bmf.jpeg" alt="Bhutan Media Foundation (BMF)" data-fallback="BMF"></span>
+            <span class="marq-item" data-org="Zero Waste Bhutan"><img src="images/clients/zerowaste.png" alt="Zero Waste Bhutan" data-fallback="Zero Waste Bhutan"></span>
+            <span class="marq-item" data-org="National Centre for Animal Health (LIMS)"><img src="images/clients/lims.png" alt="National Centre for Animal Health (LIMS)" data-fallback="LIMS"></span>
+            <span class="marq-item" data-org="Zimdra Food Pvt. Ltd."><img src="images/clients/zimdra.png" alt="Zimdra Food Pvt. Ltd." data-fallback="Zimdra"></span>
+            <span class="marq-item" data-org="Gongphel Early Learning Centre (ECPF)"><img src="images/clients/gongphel.png" alt="Gongphel Early Learning Centre (ECPF)" data-fallback="Gongphel ECPF"></span>
+            <span class="marq-item" data-org="Bhutan Green Business Standards (GBS)"><img src="images/clients/bhutangbs.jpg" alt="Bhutan Green Business Standards (GBS)" data-fallback="Bhutan GBS"></span>
+            <span class="marq-item" data-org="Invest Bhutan Portal (MoICE)"><img src="images/clients/investbhutan.png" alt="Invest Bhutan Portal (MoICE)" data-fallback="Invest Bhutan"></span>
+            <span class="marq-item" data-org="National Biodiversity Centre (NBC)"><img src="images/clients/nbc.jpg" alt="National Biodiversity Centre (NBC)" data-fallback="NBC"></span>
+            <span class="marq-item" data-org="Innovate Bhutan"><img src="images/clients/innovativebhutan.png" alt="Innovate Bhutan" data-fallback="Innovate Bhutan"></span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- CAPABILITIES -->
-    <section id="capabilities" class="caps">
+    <!-- SERVICES -->
+    <section id="services" class="services">
       <div class="shell">
         <div class="sec-head reveal">
-          <span class="eyebrow">What we do</span>
           <h2>Six practices, one delivery team.</h2>
           <p class="lede">We take on the full arc — discovery, engineering, deployment, and multi-year support — so you
             aren’t stitching together three vendors across two time zones.</p>
         </div>
 
-        <figure class="caps-showcase reveal" data-reveal="scale">
-          <img src="images/what-we-deliver.svg"
-            alt="Six practices, one delivery team: 01 Web applications, 02 Mobile applications, 03 Cloud &amp; migration, 04 Infrastructure &amp; networking, 05 ERP implementation, 06 System integration"
-            width="1024" height="500" loading="lazy">
+        <figure class="services-showcase reveal" data-reveal="scale">
+          <button type="button" class="services-replay" id="servicesReplay" aria-label="Replay team animation">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M3 12a9 9 0 1 0 3-6.7L3 8" />
+              <path d="M3 3v5h5" />
+            </svg>
+            <span>Replay</span>
+          </button>
+          <div class="services-stage" id="servicesStage">
+            <img id="servicesAnim" src="motion/yuevaan-team-animation.svg"
+              data-src="motion/yuevaan-team-animation.svg"
+              alt="Six practices, one delivery team: 01 Web applications, 02 Mobile applications, 03 Cloud &amp; migration, 04 Infrastructure &amp; networking, 05 ERP implementation, 06 System integration"
+              width="1600" height="900" decoding="async">
+          </div>
+          <figcaption class="visually-hidden">
+            Animated isometric floor of the Yuevaan delivery team across six practices connected to a central hub:
+            01 Web applications, 02 Mobile applications (iOS and Android), 03 Cloud and migration,
+            04 Infrastructure and networking, 05 ERP implementation (Finance, HR, Inventory, Sales),
+            and 06 System integration (CRM, ERP, API, Pay, Web).
+          </figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- WORK — FEATURED PROJECTS (EDITORIAL ARCHITECTURAL GRID) -->
-    <section id="work" class="work">
+    <!-- PORTFOLIO — FEATURED PROJECTS (EDITORIAL ARCHITECTURAL GRID) -->
+    <section id="portfolio" class="portfolio">
       <div class="shell">
         <div class="sec-head reveal">
-          <p class="eyebrow on-dark">Selected work · Featured projects</p>
           <h2>Systems in production</h2>
           <p class="lede">Nineteen featured production systems delivered and maintained across Bhutan — ordered chronologically from our most recent deployments.</p>
         </div>
@@ -633,8 +632,6 @@
             </div>
           </article>
         </div>
-
-        <p class="work-note reveal">+ <span data-count="8">8</span> more institutional deployments across legal, energy, banking and civil society (OAG, DHI, Bhutan NDI, RSPN, Gongphel ECPF &amp; Bhutan GBS).</p>
       </div>
     </section>
 
@@ -642,7 +639,6 @@
     <section id="approach" class="approach">
       <div class="shell">
         <div class="sec-head reveal">
-          <p class="eyebrow">How we work</p>
           <h2>Scoped, built, then supported</h2>
           <p class="lede">Procurement here rewards teams that stay after handover. Ours does.</p>
         </div>
@@ -693,7 +689,7 @@
               <span class="proj-tag">Live Staging URL</span>
               <span class="proj-tag">Security &amp; QA</span>
             </div>
-            <a class="proj-more" href="#work">See systems in production <span aria-hidden="true">→</span></a>
+            <a class="proj-more" href="#portfolio">See systems in production <span aria-hidden="true">→</span></a>
           </article>
 
           <article class="phase reveal" data-accent="red">
@@ -725,14 +721,15 @@
 
     <!-- CONTACT -->
     <section id="contact" class="contact">
-      <div class="shell contact-grid">
-        <div class="cinfo reveal" data-reveal="left">
-          <p class="eyebrow">Get in touch</p>
+      <div class="shell">
+        <div class="sec-head reveal">
           <h2>Tell us what you're building</h2>
-          <p class="lede" style="margin-top:16px">Send the brief, the tender document, or just the problem. We reply
-            within one working day.</p>
+          <p class="lede">Send the brief, the tender document, or just the problem. We reply within one working day.</p>
+        </div>
 
-          <div class="contact-cards">
+        <div class="contact-grid">
+          <div class="cinfo reveal" data-reveal="left">
+            <div class="contact-cards">
             <div class="contact-card reveal">
               <div class="contact-card-icon" data-color="blue" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
@@ -796,6 +793,15 @@
               </div>
             </div>
           </div>
+
+          <div class="map is-loaded reveal" data-reveal="scale">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d503.77410867869423!2d89.65814007763153!3d27.451617605673466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e193014cb56219%3A0x62c29fa9f04c61fa!2sYuevaan%20IT%20Consultancy!5e0!3m2!1sen!2sbt!4v1708108622087!5m2!1sen!2sbt"
+              title="Map showing the Yuevaan IT Consultancy office in Thimphu" loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+              allowfullscreen></iframe>
+          </div>
         </div>
 
         <div class="contact-right">
@@ -809,49 +815,49 @@
             </div>
             <div class="two">
               <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text"
-                  autocomplete="name" required placeholder="Karma Dorji"></div>
+                  autocomplete="name" required maxlength="120" placeholder="Karma Dorji"></div>
               <div class="field"><label for="f-org">Organisation</label><input id="f-org" name="organisation" type="text"
-                  autocomplete="organization" placeholder="Ministry, company or NGO"></div>
+                  autocomplete="organization" maxlength="160" placeholder="Ministry, company or NGO"></div>
             </div>
             <div class="two">
               <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email"
-                  autocomplete="email" required placeholder="you@organisation.bt"></div>
+                  autocomplete="email" required maxlength="254" placeholder="you@organisation.bt"></div>
               <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel"
-                  autocomplete="tel" placeholder="+975">
+                  autocomplete="tel" maxlength="25" pattern="^[0-9+()\s.\-]{6,25}$" placeholder="+975">
               </div>
             </div>
             <div class="two">
               <div class="field">
                 <label for="f-svc">What you need</label>
                 <select id="f-svc" name="service">
-                  <option>Web application</option>
-                  <option>Mobile application</option>
-                  <option>Cloud &amp; migration</option>
-                  <option>Infrastructure &amp; networking</option>
-                  <option>ERP implementation</option>
-                  <option>System integration</option>
-                  <option>Not sure yet</option>
+                  <option value="Web application">Web application</option>
+                  <option value="Mobile application">Mobile application</option>
+                  <option value="Cloud &amp; migration">Cloud &amp; migration</option>
+                  <option value="Infrastructure &amp; networking">Infrastructure &amp; networking</option>
+                  <option value="ERP implementation">ERP implementation</option>
+                  <option value="System integration">System integration</option>
+                  <option value="Not sure yet">Not sure yet</option>
                 </select>
               </div>
               <div class="field">
                 <label for="f-when">Timeline</label>
                 <select id="f-when" name="timeline">
-                  <option>Tender in progress</option>
-                  <option>Within 3 months</option>
-                  <option>This year</option>
-                  <option>Exploring</option>
+                  <option value="Tender in progress">Tender in progress</option>
+                  <option value="Within 3 months">Within 3 months</option>
+                  <option value="This year">This year</option>
+                  <option value="Exploring">Exploring</option>
                 </select>
               </div>
             </div>
-            <div class="field"><label for="f-msg">The problem in a few lines</label><textarea id="f-msg" name="message"
-                required placeholder="What exists today, what should change, who uses it."></textarea></div>
+            <div class="field field-grow"><label for="f-msg">The problem in a few lines</label><textarea id="f-msg" name="message"
+                required minlength="10" maxlength="3000" placeholder="What exists today, what should change, who uses it."></textarea></div>
 
             <!-- Honeypot: hidden from people, irresistible to bots. A filled value
                  means the submission is discarded server-side. aria-hidden and
                  tabindex keep it out of the keyboard and screen-reader path. -->
             <div class="hp" aria-hidden="true">
               <label for="f-company-url">Company URL</label>
-              <input id="f-company-url" name="company_url" type="text" tabindex="-1" autocomplete="off">
+              <input id="f-company-url" name="company_url" type="text" maxlength="200" tabindex="-1" autocomplete="off">
             </div>
 
             <button class="btn btn-primary btn-block" type="submit" id="sendBtn">Send enquiry <span aria-hidden="true">→</span></button>
@@ -861,13 +867,7 @@
               <a href="https://wa.me/97517585383" target="_blank" rel="noopener noreferrer">Message us directly</a>.
             </p>
           </form>
-
-          <div class="map is-loaded reveal" data-reveal="scale">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d503.77410867869423!2d89.65814007763153!3d27.451617605673466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e193014cb56219%3A0x62c29fa9f04c61fa!2sYuevaan%20IT%20Consultancy!5e0!3m2!1sen!2sbt!4v1708108622087!5m2!1sen!2sbt"
-              title="Map showing the Yuevaán IT Consultancy office in Thimphu" loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-          </div>
+        </div>
         </div>
       </div>
     </section>
@@ -877,9 +877,9 @@
     <div class="shell">
       <div class="foot-grid">
         <div class="reveal">
-          <a class="foot-brand" href="index.html" aria-label="Yuevaán IT Consultancy — home">
-            <img src="images/yuevaanlogo-removebg-preview.png" alt="" width="38" height="38" onerror="this.style.display='none'">
-            <span class="brand-txt">Yuevaán<span>IT Consultancy</span></span>
+          <a class="foot-brand" href="index.html" aria-label="Yuevaan IT Consultancy — home">
+            <img src="images/yuevaanlogo-removebg-preview.png" alt="" width="38" height="38" data-hide-on-error>
+            <span class="brand-txt">Yuevaan<span>IT Consultancy</span></span>
           </a>
           <p class="foot-about">Bhutan's leading software development company delivering innovative web, mobile, ERP and cloud infrastructure solutions since 2017.</p>
 
@@ -941,20 +941,20 @@
         <div class="reveal">
           <h4>Services</h4>
           <ul>
-            <li><a href="#capabilities">Web Application Development</a></li>
-            <li><a href="#capabilities">Mobile App Development</a></li>
-            <li><a href="#capabilities">Cloud &amp; Migration</a></li>
-            <li><a href="#capabilities">IT Infrastructure &amp; Networking</a></li>
-            <li><a href="#capabilities">ERP Implementation</a></li>
-            <li><a href="#capabilities">System Integration</a></li>
+            <li><a href="#services">Web Application Development</a></li>
+            <li><a href="#services">Mobile App Development</a></li>
+            <li><a href="#services">Cloud &amp; Migration</a></li>
+            <li><a href="#services">IT Infrastructure &amp; Networking</a></li>
+            <li><a href="#services">ERP Implementation</a></li>
+            <li><a href="#services">System Integration</a></li>
           </ul>
         </div>
         <div class="reveal">
           <h4>Company</h4>
           <ul>
             <li><a href="#approach">About Us</a></li>
-            <li><a href="#work">Featured Projects</a></li>
-            <li><a href="#capabilities">What We Deliver</a></li>
+            <li><a href="#portfolio">Featured Projects</a></li>
+            <li><a href="#services">What We Deliver</a></li>
             <li><a href="#contact">Contact Us</a></li>
             <li><a href="#contact">Careers</a></li>
           </ul>
@@ -970,7 +970,7 @@
         </div>
       </div>
       <div class="foot-bottom">
-        <span>© 2026 Yuevaán IT Consultancy. All rights reserved.</span>
+        <span>© 2026 Yuevaan IT Consultancy. All rights reserved.</span>
         <span>
           <a href="privacy.html">Privacy Policy</a> ·
           <a href="terms.html">Terms of Service</a>
